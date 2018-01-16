@@ -20,6 +20,7 @@ if __name__ == "__main__":
 			print now, ",", domain, ",",r
 		line += str(cnt) + "," + str(now) + "," + domain + "," + str(r) + "\n"
 		f.write(line)
+		cnt += 1
 		time.sleep(3600)
 
 	f.close()
