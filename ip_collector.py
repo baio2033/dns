@@ -18,7 +18,7 @@ if __name__ == "__main__":
 		now = "%02d-%02d-%02d %02d:%02d:%02d" %(now.tm_year,now.tm_mon,now.tm_mday,now.tm_hour,now.tm_min,now.tm_sec)
 		for r in ans:
 			print now, ",", domain, ",",r
-		line += str(cnt) + "," + now + "," + domain + "," + r + "\n"
+		line += str(cnt) + "," + str(now) + "," + domain + "," + str(r) + "\n"
 		f.write(line)
 		time.sleep(3600)
 
