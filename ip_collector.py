@@ -14,7 +14,7 @@ def getIP(domain):
 	for r in ans:
 		ip = str(r)
 
-	return ip
+	return ip, resolv.nameservers[0]
 
 def getTime():
 	now = time.localtime()
@@ -23,18 +23,20 @@ def getTime():
 
 def record(domain):
 	idx = 0
+	field = ["index","date","domain","IP","DNS"]
 	while True:
 		f = open('result.csv', 'a')
 		with f:
 			writer = csv.writer(f)
-
-			ip = getIP(domain)
+			if idx == 0:
+				writer.writerow(field)
+			ip, nameserver = getIP(domain)
 			date = getTime()
 
-			row = [idx,date,domain,ip]
+			row = [idx,date,domain,ip,nameserver]
 			writer.writerow(row)			
 
-		time.sleep(1)	
+		time.sleep(3600)	
 		f.close()
 		idx += 1
 
