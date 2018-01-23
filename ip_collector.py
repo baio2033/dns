@@ -3,7 +3,13 @@ import dns.resolver
 
 def getIP(domain):
 	resolv = dns.resolver.Resolver()
-	ans = resolv.query(domain, "A")
+
+	try:
+		ans = resolv.query(domain, "A")
+	except:
+		print("[-] dns change -> 8.8.8.8")
+		resolv.nameservers = ['8.8.8.8']
+		ans = resolv.query(domain, "A")
 
 	for r in ans:
 		ip = str(r)
@@ -16,6 +22,7 @@ def getTime():
 	return now
 
 def record(domain):
+	idx = 0
 	while True:
 		f = open('result.csv', 'a')
 		with f:
@@ -24,12 +31,12 @@ def record(domain):
 			ip = getIP(domain)
 			date = getTime()
 
-			row = [domain,ip,date]
-			writer.writerow(row)
-			print(row)
+			row = [idx,date,domain,ip]
+			writer.writerow(row)			
 
-		time.sleep(1)
+		time.sleep(1)	
 		f.close()
+		idx += 1
 
 
 
