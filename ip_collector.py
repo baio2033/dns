@@ -3,6 +3,7 @@ import dns.resolver
 
 def getIP(domain,nameserver):
 	resolv = dns.resolver.Resolver()
+	resolv.nameservers = nameserver[0]
 
 	try:
 		ans = resolv.query(domain, "A")
