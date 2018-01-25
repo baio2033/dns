@@ -1,5 +1,6 @@
 import threading, time, csv, sys
 import dns.resolver
+from datetime import timezone, timedelta, datetime
 
 def getIP(domain,nameserver):
 	resolv = dns.resolver.Resolver(configure=False)
@@ -19,8 +20,9 @@ def getIP(domain,nameserver):
 	return ip, resolv.nameservers[0]
 
 def getTime():
-	now = time.localtime()
-	now = "%02d-%02d-%02d %02d:%02d:%02d" %(now.tm_year,now.tm_mon,now.tm_mday,now.tm_hour,now.tm_min,now.tm_sec)
+	dt = datetime.now(timezone.utc)
+	tz = timezone(timedelta(hours=9))
+	now = str(dt.astimezone(tz))
 	return now
 
 def record(domain,nameserver):
