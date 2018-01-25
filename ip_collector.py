@@ -48,7 +48,9 @@ if __name__ == "__main__":
 	domain = "fl0ckfl0ck.info"
 
 	if len(sys.argv) < 2:
-		nameserver = None
+		print("[-] Error!\n")
+		print("Check your input argument\n")
+		sys.exit() 
 	else:
 		nameserver = []
 		nameserver.append(sys.argv[1])
