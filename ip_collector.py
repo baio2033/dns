@@ -32,10 +32,10 @@ def record(domain,nameserver):
 			writer = csv.writer(f)
 			if idx == 0:
 				writer.writerow(field)
-			ip, nameserver = getIP(domain,nameserver)
+			ip, server = getIP(domain,nameserver)
 			date = getTime()
 
-			row = [idx,date,domain,ip,nameserver]
+			row = [idx,date,domain,ip,server]
 			writer.writerow(row)			
 
 		time.sleep(3600)	
@@ -53,8 +53,8 @@ if __name__ == "__main__":
 		sys.exit() 
 	else:
 		nameserver = []
-		nameserver.append(sys.argv[1])
-		nameserver.append(sys.argv[2])
+		nameserver.append(str(sys.argv[1]))
+		nameserver.append(str(sys.argv[2]))
 
 	print('''
   ___ ____     ____ _               _                 
