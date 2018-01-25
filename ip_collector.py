@@ -8,7 +8,7 @@ def getIP(domain,nameserver):
 	try:
 		ans = resolv.query(domain, "A")
 	except:
-		print("[-] dns change -> ",nameservers[1])
+		print("[-] dns change -> ",nameserver[1])
 		resolv.nameservers = nameserver[1]
 		ans = resolv.query(domain, "A")
 
