@@ -2,8 +2,9 @@ import threading, time, csv, sys
 import dns.resolver
 
 def getIP(domain,nameserver):
-	resolv = dns.resolver.Resolver()
-	resolv.nameservers = nameserver[0]
+	resolv = dns.resolver.Resolver(configure=False)
+	if nameserver:
+		resolv.nameservers = nameserver
 
 	try:
 		ans = resolv.query(domain, "A")
@@ -47,7 +48,7 @@ if __name__ == "__main__":
 	domain = "fl0ckfl0ck.info"
 
 	if len(sys.argv) < 2:
-		nameserver = ["8.8.8.8", "208.67.222.222"]
+		nameserver = None
 	else:
 		nameserver = []
 		nameserver.append(sys.argv[1])
