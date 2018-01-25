@@ -10,7 +10,7 @@ def getIP(domain,nameserver):
 		ans = resolv.query(domain, "A")
 	except:
 		print("[-] dns change -> ",nameserver[1])
-		resolv.nameservers = nameserver[1]
+		resolv.nameservers[0] = nameserver[1]		
 		ans = resolv.query(domain, "A")
 
 	for r in ans:
