@@ -1,0 +1,9 @@
+[+] Domain :fl0ckfl0ck.info
+
+[+] IP List
+	- 120.50.131.112
+	- 116.67.83.27
+
+[+] DNS List
+	- 8.8.8.8
+
